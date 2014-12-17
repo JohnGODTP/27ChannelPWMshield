@@ -1,0 +1,15 @@
+.\pwm_top.o: Source_Files\pwm_top.cpp
+.\pwm_top.o: .\Header_Files\pwm_top.h
+.\pwm_top.o: .\Header_Files\pwm.h
+.\pwm_top.o: .\Header_Files\typedef.h
+.\pwm_top.o: .\Header_Files\hardware_pwm.h
+.\pwm_top.o: C:\Program_Files\Keil_v5\ARM\ARMCC\bin\..\include\string.h
+.\pwm_top.o: .\Header_Files\delay.h
+.\pwm_top.o: .\Header_Files\STM32F10x\stm32f10x.h
+.\pwm_top.o: C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cm3.h
+.\pwm_top.o: C:\Program_Files\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\pwm_top.o: C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmInstr.h
+.\pwm_top.o: C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmFunc.h
+.\pwm_top.o: .\Header_Files\STM32F10x\system_stm32f10x.h
+.\pwm_top.o: .\Header_Files\pincfg.h
+.\pwm_top.o: .\Header_Files\gpio.h

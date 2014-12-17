@@ -1,0 +1,193 @@
+L 1 "Source_Files\ring_buffer.cpp"
+N#include "ring_buffer_def.h"
+L 1 ".\Header_Files\ring_buffer_def.h" 1
+N#ifndef __RING_BUFFER_DEF_H__
+N#define __RING_BUFFER_DEF_H__
+N
+Nextern "C"{
+N#include"typedef.h"
+L 1 ".\Header_Files\typedef.h" 1
+N#ifndef __TYPE_DEF_H__
+N#define __TYPE_DEF_H__
+N
+N
+Ntypedef          char   CHAR;
+Ntypedef unsigned char   UCHAR;
+Ntypedef unsigned char   U8;
+Ntypedef UCHAR BYTE;
+Ntypedef signed char     S8;
+N
+Ntypedef unsigned short  USHORT;
+Ntypedef unsigned short  U16;
+Ntypedef U16 WORD;
+N
+Ntypedef unsigned int    U32;
+Ntypedef unsigned long   ULONG;
+Ntypedef ULONG DWORD;
+N
+Ntypedef unsigned long long U64;
+Ntypedef unsigned int    BOOL;
+Ntypedef char           *PCHAR;
+Ntypedef unsigned char  *PUCHAR;
+N
+Ntypedef const char* LPCTSTR ;
+N//typedef  bool BOOL ;
+N
+N#ifndef NULL
+N  #define NULL 0
+N#endif
+N
+N#ifndef TRUE
+N  #define TRUE 1
+N#endif
+N
+N#ifndef FALSE
+N  #define FALSE 0
+N#endif
+N
+N
+N#define __SFR_MEM32(x) (*((volatile unsigned int*)(x)))
+N
+N#define VALUE_OFFSET_IN_STRUCT(struct_name,value_name) ((unsigned long)&(((struct_name*)0)->value_name))
+N// bit_word_offset = (byte_offset x 32) + (bit_number x 4)
+N// bit_word_addr = bit_band_base + bit_word_offset
+N#define __SFR_IO_BIT(byte_offset,bit_number) __SFR_MEM32(((unsigned long)PERIPH_BB_BASE + ((unsigned long)byte_offset<<5) + ((unsigned long)bit_number<<2)))
+N#define __SFR_RAM_BIT(byte_offset,bit_number) __SFR_MEM32(((unsigned long)SRAM_BB_BASE + ((unsigned long)byte_offset<<5) + ((unsigned long)bit_number<<2)))
+N
+Ntypedef void(*ISR)(void);								
+N#define F_CPU ((U32)72000000)
+N#define F_APB1  F_CPU/2
+N#define F_APB2  F_CPU
+N
+N#endif
+N
+L 6 ".\Header_Files\ring_buffer_def.h" 2
+N}
+N
+N
+N#define _EnableCpuInttrupt() __asm("CPSIE I")
+N#define _DisableCpuInttrupt() __asm("CPSID I")
+N
+Ntemplate<class T1>
+N	
+Nclass RingBuffer{
+N	private:
+N		T1* pBuffer;
+N    U32 bufSize;
+N    U32 readPoint;
+N	  U32 writePoint;
+N	  U32 emptySpace;
+N	  BOOL empty;
+N	public:
+N		RingBuffer();
+N	  ~RingBuffer();
+N	  void SetBuffer(T1* pBuf,U32 size);
+N	  T1 *GetBuffer(void);
+N	  U32 GetBufferLength(void);
+N		void ReSet(void);
+N		BOOL Push(T1 data);
+N	  BOOL Pop(T1* data);
+N};
+N#endif
+L 2 "Source_Files\ring_buffer.cpp" 2
+N
+N
+N
+Ntemplate<typename  T1>
+NRingBuffer<T1>::RingBuffer()
+N{
+N	pBuffer = NULL;
+X	pBuffer = 0;
+N  bufSize = 0x00000000;
+N  readPoint = 0x00000000;
+N	writePoint = 0x00000000;
+N	emptySpace = 0x00000000;
+N	empty = TRUE;
+X	empty = 1;
+N}
+N
+Ntemplate<typename T1>
+NRingBuffer<T1>:: ~RingBuffer()
+N{
+N	
+N}
+N
+N
+Ntemplate<typename T1>
+Nvoid RingBuffer<T1>::SetBuffer(T1* pBuf,U32 size)
+N{
+N	bufSize = size;
+N	pBuffer = pBuf;
+N	emptySpace = bufSize;
+N}
+N
+Ntemplate<typename T1>
+NT1* RingBuffer<T1>::GetBuffer(void)
+N{
+N	return pBuffer;
+N}
+N
+N
+Ntemplate<typename T1>
+NU32 RingBuffer<T1>::GetBufferLength(void)
+N{
+N	return bufSize;
+N}
+N
+N
+Ntemplate<typename T1>
+Nvoid RingBuffer<T1>::ReSet(void)
+N{
+N  _DisableCpuInttrupt();
+X  __asm("CPSID I");
+N	readPoint = 0x00000000;
+N	writePoint = 0x00000000;
+N	emptySpace = bufSize;
+N	empty = TRUE;
+X	empty = 1;
+N  _EnableCpuInttrupt();
+X  __asm("CPSIE I");
+N}
+N
+Ntemplate<typename T1>
+NBOOL RingBuffer<T1>::Push(T1 data)
+N{
+N	if(emptySpace)
+N	{
+N    _DisableCpuInttrupt();
+X    __asm("CPSID I");
+N		if(writePoint == bufSize)
+N		{
+N			writePoint = 1;
+N			pBuffer[0] = data;
+N		}
+N		else pBuffer[writePoint++] = data;
+N		emptySpace --;
+N    _EnableCpuInttrupt();
+X    __asm("CPSIE I");
+N    return TRUE;
+X    return 1;
+N	}
+N	else return FALSE;
+X	else return 0;
+N}
+N
+Ntemplate<typename T1>
+NBOOL RingBuffer<T1>::Pop(T1* data)
+N{
+N	if(emptySpace >= bufSize)return FALSE;
+X	if(emptySpace >= bufSize)return 0;
+N  _DisableCpuInttrupt();
+X  __asm("CPSID I");
+N	if(readPoint == bufSize)
+N	{
+N		readPoint = 1;
+N		*data = pBuffer[0];
+N	}
+N	else *data = pBuffer[readPoint++];
+N	emptySpace ++;
+N	_EnableCpuInttrupt();
+X	__asm("CPSIE I");
+N  return TRUE;
+X  return 1;
+N}

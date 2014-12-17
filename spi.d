@@ -1,0 +1,12 @@
+.\spi.o: Source_Files\spi.c
+.\spi.o: .\Header_Files\spi.h
+.\spi.o: .\Header_Files\pincfg.h
+.\spi.o: .\Header_Files\gpio.h
+.\spi.o: .\Header_Files\STM32F10x\stm32f10x.h
+.\spi.o: C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cm3.h
+.\spi.o: C:\Program_Files\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\spi.o: C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmInstr.h
+.\spi.o: C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmFunc.h
+.\spi.o: .\Header_Files\STM32F10x\system_stm32f10x.h
+.\spi.o: .\Header_Files\delay.h
+.\spi.o: .\Header_Files\typedef.h

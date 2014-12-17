@@ -1,0 +1,215 @@
+L 1 "Source_Files\pwm.cpp"
+N#include "pwm.h"
+L 1 ".\Header_Files\pwm.h" 1
+N#ifndef __PWM_H__
+N#define __PWM_H__
+N
+Nextern "C"{
+N#include"typedef.h"
+L 1 ".\Header_Files\typedef.h" 1
+N#ifndef __TYPE_DEF_H__
+N#define __TYPE_DEF_H__
+N
+N
+Ntypedef          char   CHAR;
+Ntypedef unsigned char   UCHAR;
+Ntypedef unsigned char   U8;
+Ntypedef UCHAR BYTE;
+Ntypedef signed char     S8;
+N
+Ntypedef unsigned short  USHORT;
+Ntypedef unsigned short  U16;
+Ntypedef U16 WORD;
+N
+Ntypedef unsigned int    U32;
+Ntypedef unsigned long   ULONG;
+Ntypedef ULONG DWORD;
+N
+Ntypedef unsigned long long U64;
+Ntypedef unsigned int    BOOL;
+Ntypedef char           *PCHAR;
+Ntypedef unsigned char  *PUCHAR;
+N
+Ntypedef const char* LPCTSTR ;
+N//typedef  bool BOOL ;
+N
+N#ifndef NULL
+N  #define NULL 0
+N#endif
+N
+N#ifndef TRUE
+N  #define TRUE 1
+N#endif
+N
+N#ifndef FALSE
+N  #define FALSE 0
+N#endif
+N
+N
+N#define __SFR_MEM32(x) (*((volatile unsigned int*)(x)))
+N
+N#define VALUE_OFFSET_IN_STRUCT(struct_name,value_name) ((unsigned long)&(((struct_name*)0)->value_name))
+N// bit_word_offset = (byte_offset x 32) + (bit_number x 4)
+N// bit_word_addr = bit_band_base + bit_word_offset
+N#define __SFR_IO_BIT(byte_offset,bit_number) __SFR_MEM32(((unsigned long)PERIPH_BB_BASE + ((unsigned long)byte_offset<<5) + ((unsigned long)bit_number<<2)))
+N#define __SFR_RAM_BIT(byte_offset,bit_number) __SFR_MEM32(((unsigned long)SRAM_BB_BASE + ((unsigned long)byte_offset<<5) + ((unsigned long)bit_number<<2)))
+N
+Ntypedef void(*ISR)(void);								
+N#define F_CPU ((U32)72000000)
+N#define F_APB1  F_CPU/2
+N#define F_APB2  F_CPU
+N
+N#endif
+N
+L 6 ".\Header_Files\pwm.h" 2
+N}
+N#define MAX_CHANNEL 11
+N
+Nclass PWM {
+N	
+N	private:
+N		BOOL En[MAX_CHANNEL];
+X		BOOL En[11];
+N	  U16 Top[MAX_CHANNEL];
+X	  U16 Top[11];
+N	  U16 Arr[MAX_CHANNEL];
+X	  U16 Arr[11];
+N	  U16 Count[MAX_CHANNEL];
+X	  U16 Count[11];
+N	  BOOL Polarity[MAX_CHANNEL];
+X	  BOOL Polarity[11];
+N	  void (*PinOut[MAX_CHANNEL])(U8);
+X	  void (*PinOut[11])(U8);
+N	  
+N	public:
+N		PWM(void *PinOut = NULL, BOOL Polarity = TRUE, U16 frequency = 50,U16 duty = 500);
+X		PWM(void *PinOut = 0, BOOL Polarity = 1, U16 frequency = 50,U16 duty = 500);
+N    ~PWM();
+N	  void Reset(U8 index);
+N	  void Enable(U8 index);
+N	  void Disable(U8 index);
+N	  void SetDuty(U8 index,U16 duty);
+N	  void SetFrequency(U8 index,U16 frequency);
+N	  void SetPolarity(U8 index,BOOL Polarity);
+N	  void SetOutPutSignal(U8 index,void (*PinOut)(U8));  
+N	 
+N	  void RunningTask(U32 numClk);
+N};
+N
+N
+N#endif
+N
+N
+L 2 "Source_Files\pwm.cpp" 2
+N
+N
+NPWM ::PWM(void *PinOut, BOOL Polarity, U16 frequency,U16 duty)
+N{
+N	U8 index;
+N	U16 top;
+N	U16 arr;
+N
+N	top = (U32)200000/frequency; //source clk 200KHZ
+N	arr = (U32)top*duty/10000;
+N	for(index = 0;index <MAX_CHANNEL;index ++)
+X	for(index = 0;index <11;index ++)
+N	{
+N		En[index] = FALSE;
+X		En[index] = 0;
+N		Count[index] = 0x0000;
+N		this->Top[index] = top;
+N		this->Arr[index] = arr;
+N		this->Polarity[index] = Polarity; 
+N		this->PinOut[index] = ((void (**)(U8))PinOut)[index];
+N		this->PinOut[index](Polarity);
+N	}
+N}
+N
+NPWM ::~PWM()
+N{
+N	
+N	
+N	
+N}
+N
+N
+Nvoid PWM ::Reset(U8 index)
+N{
+N	Count[index] = 0x0000;
+N	PinOut[index](Polarity[index]);
+N}
+N
+Nvoid PWM ::Enable(U8 index)
+N{
+N	En[index] = TRUE;
+X	En[index] = 1;
+N	//PinOut[index](Polarity[index]);
+N}
+N
+N
+Nvoid PWM ::Disable(U8 index)
+N{
+N	En[index] = FALSE;
+X	En[index] = 0;
+N	Reset(index);
+N}
+N	 
+Nvoid PWM::SetDuty(U8 index,U16 duty)
+N{
+N	U16 arr;
+N
+N	arr = (U16)((U32)Top[index]*duty/10000);
+N	Arr[index] = arr;
+N}
+N
+N
+Nvoid PWM::SetFrequency(U8 index,U16 frequency)
+N{
+N	U16 top;
+N
+N	top = (U32)200000/frequency; //source clk 200KHZ
+N  Top[index] = top;
+N}
+N
+N
+Nvoid PWM ::SetPolarity(U8 index,BOOL Polarity)
+N{
+N	this->Polarity[index] = Polarity;
+N	Reset(index);
+N}
+N
+N
+Nvoid PWM ::SetOutPutSignal(U8 index,void (*PinOut)(U8))
+N{
+N	Reset(index);
+N	this->PinOut[index] = PinOut;
+N}
+N
+Nvoid PWM ::RunningTask(U32 numClk)
+N{
+N	U8 index;
+N	
+N	for(index = 0;index <MAX_CHANNEL;index ++)
+X	for(index = 0;index <11;index ++)
+N	{
+N		if(!En[index])continue;
+N		if(Count[index] >= Arr[index])
+N		{
+N			Count[index] += numClk;
+N		  if(Count[index] >= Top[index])
+N		  {
+N			  PinOut[index](0x02);
+N			  Count[index] = 0x0000;
+N		  }
+N		}
+N		else 
+N		{
+N			Count[index] += numClk;
+N			if(Count[index] >= Arr[index])PinOut[index](0x02);
+N		}
+N  }
+N}
+N
+N
+N
+N

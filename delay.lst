@@ -1,0 +1,43 @@
+L 1 "Source_Files\delay.c"
+N#include "delay.h"
+L 1 ".\Header_Files\delay.h" 1
+N#ifndef __DELAY_H__
+N#define __DELAY_H__
+N
+N
+N#ifndef SYS_CLK
+N #define SYS_CLK 72000000
+N#endif
+N#define ms (SYS_CLK/4000)
+N#define us (SYS_CLK/4000000)
+N
+N
+Nextern void delay_ms(unsigned short ns);
+N
+Nextern void delay_us(unsigned short ns);
+N
+N#endif
+L 2 "Source_Files\delay.c" 2
+N
+N
+N
+Nvoid delay_ms(unsigned short ns)
+N{
+N  unsigned long tmp;
+N  
+N  tmp=(unsigned long)ns*ms;
+X  tmp=(unsigned long)ns*(72000000/4000);
+N  
+N  while(tmp>20)tmp--;
+N}
+N
+Nvoid delay_us(unsigned short ns)
+N{
+N  unsigned long tmp;
+N  
+N   tmp=(unsigned long)ns*us;
+X   tmp=(unsigned long)ns*(72000000/4000000);
+N  
+N   while(tmp>20)tmp--;
+N}
+N

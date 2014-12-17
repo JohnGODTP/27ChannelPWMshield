@@ -1,0 +1,93 @@
+Dependencies for Project 'MChPwm', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Source_Files\delay.c)(0x522837C0)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --asm --interleave --asm_dir ".\\" -I.\Header_Files -I.\Header_Files\STM32F10x -I.\Source_Files-I C:\Program_Files\Keil_v5\ARM\RV31\INC-I C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I C:\Program_Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-DSTM32F10X_MD -DSTM32F10X_MD -D__NO_EMBEDDED_ASM-o .\delay.o --list_dir ".\\" --list --omf_browse .\delay.crf --depend .\delay.d)
+I (.\Header_Files\delay.h)(0x537DCCB6)
+F (.\Source_Files\spi.c)(0x53C39AF2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --asm --interleave --asm_dir ".\\" -I.\Header_Files -I.\Header_Files\STM32F10x -I.\Source_Files-I C:\Program_Files\Keil_v5\ARM\RV31\INC-I C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I C:\Program_Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-DSTM32F10X_MD -DSTM32F10X_MD -D__NO_EMBEDDED_ASM-o .\spi.o --list_dir ".\\" --list --omf_browse .\spi.crf --depend .\spi.d)
+I (.\Header_Files\spi.h)(0x53B0B580)
+I (.\Header_Files\pincfg.h)(0x53C8EF04)
+I (.\Header_Files\gpio.h)(0x53C61780)
+I (.\Header_Files\STM32F10x\stm32f10x.h)(0x4BB19F68)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cm3.h)(0x538426C6)
+I (C:\Program_Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmInstr.h)(0x5302A2D0)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmFunc.h)(0x5302A2D0)
+I (.\Header_Files\STM32F10x\system_stm32f10x.h)(0x4BB19F68)
+I (.\Header_Files\delay.h)(0x537DCCB6)
+I (.\Header_Files\typedef.h)(0x53DF4FB3)
+F (.\Source_Files\startup_stm32f10x_md.s)(0x5343AB30)(--cpu Cortex-M3 -g --apcs=interwork -I C:\Program_Files\Keil_v5\ARM\RV31\INC-I C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I C:\Program_Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include--list .\startup_stm32f10x_md.lst --xref -o .\startup_stm32f10x_md.o --depend .\startup_stm32f10x_md.d)
+F (.\Source_Files\main.cpp)(0x5416AE45)(--cpp -c --cpu Cortex-M3 -g -O0 --apcs=interwork --asm --interleave --asm_dir ".\\" -I.\Header_Files -I.\Header_Files\STM32F10x -I.\Source_Files-I C:\Program_Files\Keil_v5\ARM\RV31\INC-I C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I C:\Program_Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-DSTM32F10X_MD -DSTM32F10X_MD -D__NO_EMBEDDED_ASM-o .\main.o --list_dir ".\\" --list --omf_browse .\main.crf --depend .\main.d)
+I (C:\Program_Files\Keil_v5\ARM\ARMCC\include\string.h)(0x53463A44)
+I (.\Header_Files\delay.h)(0x537DCCB6)
+I (.\Header_Files\spi.h)(0x53B0B580)
+I (.\Header_Files\pincfg.h)(0x53C8EF04)
+I (.\Header_Files\gpio.h)(0x53C61780)
+I (.\Header_Files\STM32F10x\stm32f10x.h)(0x4BB19F68)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cm3.h)(0x538426C6)
+I (C:\Program_Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmInstr.h)(0x5302A2D0)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmFunc.h)(0x5302A2D0)
+I (.\Header_Files\STM32F10x\system_stm32f10x.h)(0x4BB19F68)
+I (.\Header_Files\typedef.h)(0x53DF4FB3)
+I (.\Header_Files\pwm_top.h)(0x53B108C4)
+I (.\Header_Files\pwm.h)(0x53CCB64E)
+I (.\Header_Files\hardware_pwm.h)(0x53B10942)
+I (.\Header_Files\ring_buffer.h)(0x53C77108)
+I (.\Source_Files\ring_buffer.cpp)(0x53DF527F)
+I (.\Header_Files\ring_buffer_def.h)(0x53DF5B49)
+F (.\Source_Files\pwm.cpp)(0x54179A81)(--cpp -c --cpu Cortex-M3 -g -O0 --apcs=interwork --asm --interleave --asm_dir ".\\" -I.\Header_Files -I.\Header_Files\STM32F10x -I.\Source_Files-I C:\Program_Files\Keil_v5\ARM\RV31\INC-I C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I C:\Program_Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-DSTM32F10X_MD -DSTM32F10X_MD -D__NO_EMBEDDED_ASM-o .\pwm.o --list_dir ".\\" --list --omf_browse .\pwm.crf --depend .\pwm.d)
+I (.\Header_Files\pwm.h)(0x53CCB64E)
+I (.\Header_Files\typedef.h)(0x53DF4FB3)
+F (.\Source_Files\hardware_pwm.cpp)(0x53B106B0)(--cpp -c --cpu Cortex-M3 -g -O0 --apcs=interwork --asm --interleave --asm_dir ".\\" -I.\Header_Files -I.\Header_Files\STM32F10x -I.\Source_Files-I C:\Program_Files\Keil_v5\ARM\RV31\INC-I C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I C:\Program_Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-DSTM32F10X_MD -DSTM32F10X_MD -D__NO_EMBEDDED_ASM-o .\hardware_pwm.o --list_dir ".\\" --list --omf_browse .\hardware_pwm.crf --depend .\hardware_pwm.d)
+I (.\Header_Files\hardware_pwm.h)(0x53B10942)
+I (C:\Program_Files\Keil_v5\ARM\ARMCC\include\string.h)(0x53463A44)
+I (.\Header_Files\delay.h)(0x537DCCB6)
+I (.\Header_Files\typedef.h)(0x53DF4FB3)
+I (.\Header_Files\STM32F10x\stm32f10x.h)(0x4BB19F68)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cm3.h)(0x538426C6)
+I (C:\Program_Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmInstr.h)(0x5302A2D0)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmFunc.h)(0x5302A2D0)
+I (.\Header_Files\STM32F10x\system_stm32f10x.h)(0x4BB19F68)
+F (.\Source_Files\pwm_top.cpp)(0x53CC8EE4)(--cpp -c --cpu Cortex-M3 -g -O0 --apcs=interwork --asm --interleave --asm_dir ".\\" -I.\Header_Files -I.\Header_Files\STM32F10x -I.\Source_Files-I C:\Program_Files\Keil_v5\ARM\RV31\INC-I C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I C:\Program_Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-DSTM32F10X_MD -DSTM32F10X_MD -D__NO_EMBEDDED_ASM-o .\pwm_top.o --list_dir ".\\" --list --omf_browse .\pwm_top.crf --depend .\pwm_top.d)
+I (.\Header_Files\pwm_top.h)(0x53B108C4)
+I (.\Header_Files\pwm.h)(0x53CCB64E)
+I (.\Header_Files\typedef.h)(0x53DF4FB3)
+I (.\Header_Files\hardware_pwm.h)(0x53B10942)
+I (C:\Program_Files\Keil_v5\ARM\ARMCC\include\string.h)(0x53463A44)
+I (.\Header_Files\delay.h)(0x537DCCB6)
+I (.\Header_Files\STM32F10x\stm32f10x.h)(0x4BB19F68)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cm3.h)(0x538426C6)
+I (C:\Program_Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmInstr.h)(0x5302A2D0)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmFunc.h)(0x5302A2D0)
+I (.\Header_Files\STM32F10x\system_stm32f10x.h)(0x4BB19F68)
+I (.\Header_Files\pincfg.h)(0x53C8EF04)
+I (.\Header_Files\gpio.h)(0x53C61780)
+F (.\Source_Files\ring_buffer.cpp)(0x53DF527F)(--cpp -c --cpu Cortex-M3 -g -O0 --apcs=interwork --asm --interleave --asm_dir ".\\" -I.\Header_Files -I.\Header_Files\STM32F10x -I.\Source_Files-I C:\Program_Files\Keil_v5\ARM\RV31\INC-I C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I C:\Program_Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-DSTM32F10X_MD -DSTM32F10X_MD -D__NO_EMBEDDED_ASM-o .\ring_buffer.o --list_dir ".\\" --list --omf_browse .\ring_buffer.crf --depend .\ring_buffer.d)
+I (.\Header_Files\ring_buffer_def.h)(0x53DF5B49)
+I (.\Header_Files\typedef.h)(0x53DF4FB3)
+F (.\Source_Files\mscomm.cpp)(0x53E026E3)(--cpp -c --cpu Cortex-M3 -g -O0 --apcs=interwork --asm --interleave --asm_dir ".\\" -I.\Header_Files -I.\Header_Files\STM32F10x -I.\Source_Files-I C:\Program_Files\Keil_v5\ARM\RV31\INC-I C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I C:\Program_Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-DSTM32F10X_MD -DSTM32F10X_MD -D__NO_EMBEDDED_ASM-o .\mscomm.o --list_dir ".\\" --list --omf_browse .\mscomm.crf --depend .\mscomm.d)
+I (.\Header_Files\mscomm.h)(0x53E0272B)
+I (C:\Program_Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x53463A44)
+I (C:\Program_Files\Keil_v5\ARM\ARMCC\include\string.h)(0x53463A44)
+I (.\Header_Files\gpio.h)(0x53C61780)
+I (.\Header_Files\STM32F10x\stm32f10x.h)(0x4BB19F68)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cm3.h)(0x538426C6)
+I (C:\Program_Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmInstr.h)(0x5302A2D0)
+I (C:\Program_Files\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include\core_cmFunc.h)(0x5302A2D0)
+I (.\Header_Files\STM32F10x\system_stm32f10x.h)(0x4BB19F68)
+I (.\Header_Files\typedef.h)(0x53DF4FB3)
+I (.\Header_Files\ring_buffer.h)(0x53C77108)
+I (.\Source_Files\ring_buffer.cpp)(0x53DF527F)
+I (.\Header_Files\ring_buffer_def.h)(0x53DF5B49)
+F (.\Header_Files\delay.h)(0x537DCCB6)()
+F (.\Header_Files\pincfg.h)(0x53C8EF04)()
+F (.\Header_Files\spi.h)(0x53B0B580)()
+F (.\Header_Files\typedef.h)(0x53DF4FB3)()
+F (.\Header_Files\gpio.h)(0x53C61780)()
+F (.\Header_Files\pwm.h)(0x53CCB64E)()
+F (.\Header_Files\hardware_pwm.h)(0x53B10942)()
+F (.\Header_Files\pwm_top.h)(0x53B108C4)()
+F (.\Header_Files\ring_buffer.h)(0x53C77108)()
+F (.\Header_Files\ring_buffer_def.h)(0x53DF5B49)()
+F (.\Header_Files\mscomm.h)(0x53E0272B)()
